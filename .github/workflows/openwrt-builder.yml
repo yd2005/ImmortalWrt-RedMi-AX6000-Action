@@ -133,7 +133,7 @@ jobs:
       run: |
         echo "release_tag=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_OUTPUT
         touch release.txt
-        [ ${{ steps.artifact-upload-step.outputs.artifact-id }} ] && echo "🔗 [GoFile](${{ steps.artifact-upload-step.outputs.artifact-id }})" >> release.txt
+        [ ${{ steps.artifact-upload-step.outputs.artifact-id }} ] && echo "🔗 [GoFile](${{ steps.artifact-upload-step.outputs.artifact-url }})" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: Upload firmware to release
