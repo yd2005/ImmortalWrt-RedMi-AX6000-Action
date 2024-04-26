@@ -69,9 +69,10 @@ jobs:
         
     - name: Apply patches
       run: |
+        cp -rf patches openwrt/
         cd openwrt
-        find "$GITHUB_WORKSPACE/patches" -maxdepth 5 -type f -name '*.revert.patch' -print0 | sort -z | xargs -I % -t -0 -n 1 sh -c "cat '%'  | patch -d './' -R -B --merge -p1 -E --forward"
-        find "$GITHUB_WORKSPACE/patches" -maxdepth 5 -type f -name '*.patch' ! -name '*.revert.patch' ! -name '*.bin.patch' -print0 | sort -z | xargs -I % -t -0 -n 1 sh -c "cat '%'  | patch -d './' -B --merge -p1 -E --forward"
+        find "patches" -maxdepth 5 -type f -name '*.revert.patch' -print0 | sort -z | xargs -I % -t -0 -n 1 sh -c "cat '%'  | patch -d './' -R -B --merge -p1 -E --forward"
+        find "patches" -maxdepth 5 -type f -name '*.patch' ! -name '*.revert.patch' ! -name '*.bin.patch' -print0 | sort -z | xargs -I % -t -0 -n 1 sh -c "cat '%'  | patch -d './' -B --merge -p1 -E --forward"
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
