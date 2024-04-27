@@ -23,6 +23,7 @@
 mkdir package/utils/ucode
 mv files/package/utils/ucode/Makefile package/utils/ucode/Makefile
 
+# update golang toolchain
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
 
