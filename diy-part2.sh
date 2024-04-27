@@ -23,6 +23,10 @@
 mkdir package/utils/ucode
 mv files/package/utils/ucode/Makefile package/utils/ucode/Makefile
 
+# kernel path
+mv patches/target/linux/generic/backport-5.4/612-v5.15-netfilter-conntrack-sanitize-table-size-default-sett.patch target/linux/generic/backport-5.4/612-v5.15-netfilter-conntrack-sanitize-table-size-default-sett.patch
+mv patches/target/linux/generic/hack-5.4/661-kernel-ct-size-the-hashtable-more-adequately.patch target/linux/generic/hack-5.4/661-kernel-ct-size-the-hashtable-more-adequately.patch
+
 # update golang toolchain
 rm -rf feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
